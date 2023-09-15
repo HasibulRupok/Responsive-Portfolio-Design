@@ -19,8 +19,17 @@ function toggleMode() {
     const toggleButton = document.getElementById('toggle-mode');
     if(isDarkMode) toggleButton.innerHTML = "<i class='fa-solid fa-sun' style='color: #ffc800;'></i>";
     else toggleButton.innerHTML = "<i class='fa-solid fa-moon'></i>";
+
+
+    localStorage.setItem('mode', isDarkMode ? 'dark' : 'light');
     
 }
 const modeToggleBtn = document.getElementById('toggle-mode');
 modeToggleBtn.addEventListener('click', toggleMode);
+
+
+const storedMode = localStorage.getItem('mode');
+if (storedMode === 'light') {
+    toggleMode();
+}
 
