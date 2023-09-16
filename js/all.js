@@ -22,6 +22,12 @@ function toggleMode() {
 
 
     localStorage.setItem('mode', isDarkMode ? 'dark' : 'light');
+
+    // fix the publatication list background color 
+    const currentPagePath = window.location.pathname;
+    if(currentPagePath == '/pages/publications.html'){
+        fixPublicationBG();
+    }
     
 }
 const modeToggleBtn = document.getElementById('toggle-mode');
@@ -31,5 +37,16 @@ modeToggleBtn.addEventListener('click', toggleMode);
 const storedMode = localStorage.getItem('mode');
 if (storedMode === 'light') {
     toggleMode();
+}
+
+// change thep ublication BG color
+const fixPublicationBG = () => {
+    const mode = localStorage.getItem('mode');
+    if (mode == 'light') {
+        document.getElementById('all-publications-ul').style.backgroundColor = '#eeeeee';
+    }
+    else{
+        document.getElementById('all-publications-ul').style.backgroundColor = '#242627';
+    }
 }
 
